@@ -1,0 +1,36 @@
+{
+    // "auth": {
+    //   "rolesSource": "/api/GetRoles",
+    //   "identityProviders": {
+    //     "azureActiveDirectory": {
+    //       "registration": {
+    //         "openIdIssuer": "https://login.microsoftonline.com/a1a556a4-ef96-44a7-9887-aa86acdea510/v2.0",
+    //         "clientIdSettingName": "MY_PROVIDER_CLIENT_ID",
+    //         "clientSecretSettingName": "MY_PROVIDER_CLIENT_SECRET"
+    //       }
+    //     }
+    //   }
+    // },
+    // "navigationFallback": {
+    //   "rewrite": "index.html",
+    //   "exclude": [
+    //     "/assets/*",
+    //     "/images/*.{png,jpg,gif,ico}",
+    //     "/*.{css,scss,js}"
+    //   ]
+    // },
+    
+    "routes": [
+      {
+        "route": "/login",
+        "rewrite": "/.auth/login/aad",
+        "allowedRoles": ["anonymous", "authenticated"]
+      },
+      {
+        "route": "/*",
+        "allowedRoles": [
+          "authenticated"
+        ]
+      }
+    ]
+  }
